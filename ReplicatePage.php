@@ -40,8 +40,8 @@ call_user_func( function() {
 	
 	// i18n
 	$GLOBALS['wgMessagesDirs']['ReplicatePage'] = __DIR__ . '/i18n';
-	$GLOBALS['wgExtensionMessagesFiles']['ReplicatePage'] = __DIR__ . '/SMWParent.i18n.php';
-	$GLOBALS['wgExtensionMessagesFiles']['ReplicatePageMagic'] = __DIR__ . '/SMWParent.i18n.magic.php';
+	$GLOBALS['wgExtensionMessagesFiles']['ReplicatePage'] = __DIR__ . '/ReplicatePage.i18n.php';
+	$GLOBALS['wgExtensionMessagesFiles']['ReplicatePageMagic'] = __DIR__ . '/ReplicatePage.i18n.magic.php';
 
 	# View file referencing
 	$GLOBALS['wgAutoloadClasses']['ReplicatePage'] = __DIR__ . 'ReplicatePage_body.php';

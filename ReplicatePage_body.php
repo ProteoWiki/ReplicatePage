@@ -38,7 +38,7 @@ class ReplicatePage {
 			}	
 					
 			
-			$str = Html::rawElement( 'a', array( 'href' => "#", 'class' => "replicate-link", 'data-replicate-end' => $endtext, 'data-replicate-origin' => $origintext, 'data-replicate-reload' => $reload ), "Replicate" );
+			$str = Html::rawElement( 'a', array( 'href' => "#", 'class' => "replicate-link", 'data-replicate-target' => $endtext, 'data-replicate-source' => $origintext, 'data-replicate-reload' => $reload ), "Replicate" );
 			return $parser->insertStripItem( $str, $parser->mStripState );
 		}
 		
@@ -51,7 +51,7 @@ class ReplicatePage {
 	public static function executeReplicate ( $origintext, $endtext ) {
 
 		# 2 params ( End and Origin ) 
-                if ( isset( $origintext ) && isset( $endtext ) ) {
+		if ( isset( $origintext ) && isset( $endtext ) ) {
 			
 			$origin = Title::newFromText( $origintext ); 
 			$end = Title::newFromText( $endtext );
@@ -61,14 +61,14 @@ class ReplicatePage {
 			
 			$wikipageend = WikiPage::factory( $end );
 			
-			$wikipageend->doEdit( $content, "Replicating"); 	
+			$wikipageend->doEdit( $content, "Replicating");
 			
-			return "Replication done";
+			return "OK";
 		}
 		
 		else {
 			
-			return "Replication failed";
+			return "KO";
 		}
 
 	}

@@ -21,44 +21,51 @@
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
-        echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
-        die( 1 );
+	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
+	die( 1 );
 }
 
-$wgExtensionCredits['other'][] = array(
-        'path' => __FILE__,
-        'name' => 'ReplicatePage',
-	'version' => '0.1', 
-        'author' => array( 'Toniher' ), 
-        'url' => 'http://mediawiki.org/wiki/Extension:ReplicatePage',
-        'description' => 'Replicate one page into another',
-);
+//self executing anonymous function to prevent global scope assumptions
+call_user_func( function() {
 
-# A var to ease the referencing of files
-$dir = dirname(__FILE__) . '/';
+	$wgExtensionCredits['other'][] = array(
+			'path' => __FILE__,
+			'name' => 'ReplicatePage',
+			'version' => '0.1', 
+			'author' => array( 'Toniher' ), 
+			'url' => 'https://mediawiki.org/wiki/Extension:ReplicatePage',
+			'description' => 'replicatepage-desc',
+	);
 
-# i18n file referencing
-$wgExtensionMessagesFiles['ReplicatePage'] = $dir . 'ReplicatePage.i18n.php';
-# View file referencing
-$wgAutoloadClasses['ReplicatePage'] = $dir . 'ReplicatePage_body.php';
+	
+	// i18n
+	$GLOBALS['wgMessagesDirs']['ReplicatePage'] = __DIR__ . '/i18n';
+	$GLOBALS['wgExtensionMessagesFiles']['ReplicatePage'] = __DIR__ . '/SMWParent.i18n.php';
+	$GLOBALS['wgExtensionMessagesFiles']['ReplicatePageMagic'] = __DIR__ . '/SMWParent.i18n.magic.php';
+
+	# View file referencing
+	$GLOBALS['wgAutoloadClasses']['ReplicatePage'] = __DIR__ . 'ReplicatePage_body.php';
+	$GLOBALS['wgAutoloadClasses']['ApiReplicatePage'] = __DIR__ . 'ReplicatePage.api.php';
+
+	$GLOBALS['wgResourceModules']['ext.ReplicatePage'] = array(
+		'localBasePath' => dirname( __FILE__ ),
+		'scripts' => array( 'js/replicatePage.js' ),
+		'remoteExtPath' => 'ReplicatePage'
+	);
+
+	// TODO - Change
+	$wgAjaxExportList[] = 'ReplicatePage::executeReplicate';
+
+	// api modules
+	$GLOBALS['wgAPIModules']['replicatepage'] = 'ApiReplicatePage';
+	
+	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = 'wfRegisterReplicatePage';
 
 
-$wgResourceModules['ext.ReplicatePage'] = array(
-        'localBasePath' => dirname( __FILE__ ),
-        'scripts' => array( 'js/replicatePage.js' ),
-	'remoteExtPath' => 'ReplicatePage'
-);
-
-$wgAjaxExportList[] = 'ReplicatePage::executeReplicate';
-
-$wgHooks['ParserFirstCallInit'][] = 'wfRegisterReplicatePage';
-$wgExtensionMessagesFiles['ReplicatePage'] = $dir . '/ReplicatePage.i18n.magic.php';
+});
 
 function wfRegisterReplicatePage( $parser ) {
-
-        $parser->setFunctionHook( 'ReplicatePage', 'ReplicatePage::renderLink', SFH_OBJECT_ARGS  );
-        return true;
+	$parser->setFunctionHook( 'ReplicatePage', 'ReplicatePage::renderLink', SFH_OBJECT_ARGS  );
+	return true;
 }
 
-
-?>

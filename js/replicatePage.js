@@ -31,7 +31,7 @@ function processReplicateLink ( link ) {
 
 				$('.replicate-link-done').fadeIn().delay(1000).fadeOut();
                                
-				if (reload === 1) {
+				if (reload === "1") {
 					window.setTimeout('location.reload()', 1500);
 				}
 

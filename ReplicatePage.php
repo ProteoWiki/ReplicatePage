@@ -44,8 +44,8 @@ call_user_func( function() {
 	$GLOBALS['wgExtensionMessagesFiles']['ReplicatePageMagic'] = __DIR__ . '/ReplicatePage.i18n.magic.php';
 
 	# View file referencing
-	$GLOBALS['wgAutoloadClasses']['ReplicatePage'] = __DIR__ . 'ReplicatePage_body.php';
-	$GLOBALS['wgAutoloadClasses']['ApiReplicatePage'] = __DIR__ . 'ReplicatePage.api.php';
+	$GLOBALS['wgAutoloadClasses']['ReplicatePage'] = __DIR__ . '/ReplicatePage_body.php';
+	$GLOBALS['wgAutoloadClasses']['ApiReplicatePage'] = __DIR__ . '/ReplicatePage.api.php';
 
 	$GLOBALS['wgResourceModules']['ext.ReplicatePage'] = array(
 		'localBasePath' => dirname( __FILE__ ),

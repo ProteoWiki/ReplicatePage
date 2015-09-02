@@ -27,7 +27,9 @@ class ReplicatePage {
 			if ( isset($args[2]) ) {
 
 				if ( strpos( $args[2], "reload" ) > -1 ) {
-					$reload = 1;	
+					$reload = "true";
+				} else {
+					$reload = "false";
 				}
 
 			}
@@ -57,7 +59,7 @@ class ReplicatePage {
 			$end = Title::newFromText( $endtext );
 			
 			$wikipage = WikiPage::factory( $origin );
-			$content = $wikipage->getText();			
+			$content = $wikipage->getText();
 			
 			$wikipageend = WikiPage::factory( $end );
 			

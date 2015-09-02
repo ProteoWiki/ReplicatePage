@@ -19,6 +19,7 @@ function processReplicateLink ( link ) {
 		if (! $(link).hasClass('replicate-link-done') ) {
 
 			var param = {};
+			param['format'] = 'json';
 			param['action'] = 'replicatepage';
 			param['source'] = source;
 			param['target'] = target;
@@ -31,7 +32,7 @@ function processReplicateLink ( link ) {
 
 				$('.replicate-link-done').fadeIn().delay(1000).fadeOut();
                                
-				if (reload === "1") { // 1 in text :/
+				if (reload) {
 					window.setTimeout('location.reload()', 1500);
 				}
 

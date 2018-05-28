@@ -1,4 +1,4 @@
-/*global $ document jQuery console mw window wgScriptPath alert location setInterval */
+/*global $ document jQuery console mw window alert location setInterval */
 
 (function($) {
 
@@ -24,7 +24,7 @@ function processReplicateLink ( link ) {
 			param['source'] = source;
 			param['target'] = target;
 
-			var posting = $.get( wgScriptPath + "/api.php", param );
+			var posting = $.get( mw.config.get( 'wgScriptPath' ) + "/api.php", param );
 			posting.done(function( data ) {
 				$(link).addClass("replicate-link-done");
                 var htmlbit = "<span class='replicate-link-fade'>"+data+"</span>";

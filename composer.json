@@ -1,0 +1,22 @@
+{
+	"name": "mediawiki/replicate-page",
+	"type": "mediawiki-extension",
+	"description": "",
+	"keywords": [
+		"MediaWiki"
+	],
+	"homepage": "https://github.com/ProteoWiki/ReplicatePage",
+	"license": "GPL-3.0-or-later",
+	"authors": [
+		{
+			"name": "Toni Hermoso Pulido",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.3.0"
+	},
+	"autoload": {
+		"files": ["ReplicatePage.php"]
+	}
+}

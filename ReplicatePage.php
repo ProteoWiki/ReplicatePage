@@ -1,7 +1,5 @@
 <?php
 /**
- * Copyright (C) 2011 Toni Hermoso Pulido <toniher@cau.cat>
- * http://www.cau.cat
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,9 +29,9 @@ call_user_func( function() {
 	$wgExtensionCredits['other'][] = array(
 			'path' => __FILE__,
 			'name' => 'ReplicatePage',
-			'version' => '0.1', 
+			'version' => '0.1.0', 
 			'author' => array( 'Toniher' ), 
-			'url' => 'https://mediawiki.org/wiki/Extension:ReplicatePage',
+			'url' => 'https://github.com/ProteoWiki/ReplicatePage',
 			'description' => 'replicatepage-desc',
 	);
 
